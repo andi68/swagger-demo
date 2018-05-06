@@ -21,20 +21,19 @@ public class DemoController {
         //return ResponseEntity.ok("hello world " + name);
 
         HelloDto helloDto = new HelloDto();
-        helloDto.name = "hello " + name;
+        helloDto.setName("hello " + name);
         return ResponseEntity.ok(helloDto);
     }
 
-    public class HelloDto {
-
-        String name;
-
-        public String getName() {
-            return name;
-        }
+    private class HelloDto {
+        private String name;
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        public String getName() {
+            return name;
         }
     }
 
