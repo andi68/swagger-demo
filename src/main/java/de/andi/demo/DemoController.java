@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import de.andi.demo.model.Hello;
 
 @RestController
 public class DemoController {
@@ -15,26 +16,11 @@ public class DemoController {
     }
 
     @PostMapping(value = "/hello/{name}")
-    public ResponseEntity<HelloDto> createOrUpdateHelloWorld(
+    public ResponseEntity<Hello> createOrUpdateHelloWorld(
         @PathVariable(value = "name") String name
     ) {
-        //return ResponseEntity.ok("hello world " + name);
-
-        HelloDto helloDto = new HelloDto();
-        helloDto.setName("hello " + name);
-        return ResponseEntity.ok(helloDto);
-    }
-
-    private class HelloDto {
-        private String name;
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
+        Hello hello = new Hello("hello " + name);
+        return ResponseEntity.ok(hello);
     }
 
 }
